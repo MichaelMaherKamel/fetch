@@ -14,13 +14,13 @@ export const env = createEnv({
     //   // VERCEL_URL doesn't include `https` so it cant be validated as a URL
     //   process.env.VERCEL_URL ? z.string().min(1) : z.string().url()
     // ),
-    // NEXT_PUBLIC_APP_URL: z.string().url(),
+    NEXTAUTH_URL: z.string().url(),
+    NEXT_PUBLIC_APP_URL: z.string().url(),
     GOOGLE_CLIENT_ID: z.string().min(1),
     GOOGLE_CLIENT_SECRET: z.string().min(1),
     // GITHUB_CLIENT_ID: z.string().min(1),
     // GITHUB_CLIENT_SECRET: z.string().min(1),
     RESEND_API_KEY: z.string().min(1),
-    // VERCEL_URL: z.string().url().optional(),
   },
   client: {
     // NEXT_PUBLIC_PUBLISHABLE_KEY: z.string().min(1),
