@@ -1,7 +1,8 @@
 import { env } from '@/lib/env.mjs'
 function getBaseUrl() {
   if (typeof window !== 'undefined') return ''
-  return `http://${env.NEXT_PUBLIC_APP_URL}`
+  if (env.VERCEL_URL) return `https://${env.VERCEL_URL}`
+  return 'http://localhost:3000'
 }
 
 export function getUrl() {
