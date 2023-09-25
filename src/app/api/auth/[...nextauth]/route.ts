@@ -1,15 +1,15 @@
-import { db } from "@/lib/db";
-import { DrizzleAdapter } from "@auth/drizzle-adapter";
-import { DefaultSession, NextAuthOptions } from "next-auth";
-import NextAuth from "next-auth/next";
-import { env } from "@/lib/env.mjs"
-import GoogleProvider from "next-auth/providers/google";
+import { db } from '@/lib/db'
+import { DrizzleAdapter } from '@auth/drizzle-adapter'
+import { DefaultSession, NextAuthOptions } from 'next-auth'
+import NextAuth from 'next-auth/next'
+import { env } from '@/lib/env.mjs'
+import GoogleProvider from 'next-auth/providers/google'
 
-declare module "next-auth" {
+declare module 'next-auth' {
   interface Session {
-    user: DefaultSession["user"] & {
-      id: string;
-    };
+    user: DefaultSession['user'] & {
+      id: string
+    }
   }
 }
 
@@ -17,17 +17,17 @@ export const authOptions: NextAuthOptions = {
   adapter: DrizzleAdapter(db),
   callbacks: {
     session: ({ session, user }) => {
-      session.user.id = user.id;
-      return session;
+      session.user.id = user.id
+      return session
     },
   },
   providers: [
-     GoogleProvider({
+    GoogleProvider({
       clientId: env.GOOGLE_CLIENT_ID,
       clientSecret: env.GOOGLE_CLIENT_SECRET,
-    })
+    }),
   ],
-};
+}
 
-const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST };
+const handler = NextAuth(authOptions)
+export { handler as GET, handler as POST }

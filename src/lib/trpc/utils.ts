@@ -1,6 +1,8 @@
+import { env } from '../env.mjs'
+
 function getBaseUrl() {
   if (typeof window !== 'undefined') return ''
-  return `http://${process.env.NEXTAUTH_URL}`
+  return `http://${env.NEXTAUTH_URL}`
 }
 
 export function getUrl() {

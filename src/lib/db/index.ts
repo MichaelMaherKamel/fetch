@@ -3,7 +3,7 @@ import { connect } from "@planetscale/database";
 import { env } from "@/lib/env.mjs";
  
 // create the connection
-const connection = connect({
+export const connection = connect({
   url: env.DATABASE_URL
 });
  
