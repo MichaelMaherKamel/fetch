@@ -30,7 +30,7 @@ export default function User() {
         <DropdownMenuTrigger asChild>
           <Button variant='secondary' className='relative h-8 w-8 rounded-full'>
             <Avatar className='h-8 w-8'>
-              <AvatarImage src={session.user.image} alt={session.user.name ?? ''} />
+              <AvatarImage src={session.user.image ?? ''} alt={session.user.name ?? ''} />
               <AvatarFallback>{initials}</AvatarFallback>
             </Avatar>
           </Button>
