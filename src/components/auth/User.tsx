@@ -21,7 +21,7 @@ import { getInitials } from '@/lib/config/utils'
 export default function User() {
   const { data: session, status } = useSession()
 
-  if (status === 'loading') return <div>Loading...</div>
+  if (status === 'loading') return <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />
 
   if (session) {
     const initials = getInitials(session.user?.name ?? '')
@@ -75,8 +75,8 @@ export default function User() {
     )
   }
   return (
-    <Button variant='ghost' size='icon' onClick={() => signIn()}>
-      <Icons.user className='h-4 w-4' />
+    <Button variant='ghost' size='icon' onClick={() => signIn('google')}>
+      <Icons.user />
     </Button>
   )
 }

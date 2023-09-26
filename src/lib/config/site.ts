@@ -1,13 +1,24 @@
-import { productCategories } from './products'
+import type { FooterItem, MainNavItem, FooterNavSocial } from '@/lib/types/index'
 
+import { productCategories } from './products'
 import { slugify } from './utils'
+
+import { Icons } from '@/components/ui/icons'
+
+export type SiteConfig = typeof siteConfig
+
+const links = {
+  instgram: '#',
+  facebook: '#',
+}
 
 export const siteConfig = {
   name: 'Fetch',
   description: 'Empowering fashion, global platform uniting creators and consumers',
   goal: 'Buy and sell clothing products from local and global brands and stores',
   url: 'https://fetch-iota.vercel.app',
-  navItems: [
+  ogImage: '/images/acquirestore.webp',
+  mainNav: [
     ...productCategories.map((category) => ({
       title: category.title,
       items: [
@@ -24,41 +35,8 @@ export const siteConfig = {
         })),
       ],
     })),
-  ],
-  //   navMenuItems: [
-  //     {
-  //       label: 'Profile',
-  //       href: '/profile',
-  //     },
-  //     {
-  //       label: 'Dashboard',
-  //       href: '/dashboard',
-  //     },
-  //     {
-  //       label: 'Projects',
-  //       href: '/projects',
-  //     },
-  //     {
-  //       label: 'Team',
-  //       href: '/team',
-  //     },
-  //     {
-  //       label: 'Calendar',
-  //       href: '/calendar',
-  //     },
-  //     {
-  //       label: 'Settings',
-  //       href: '/settings',
-  //     },
-  //     {
-  //       label: 'Help & Feedback',
-  //       href: '/help-feedback',
-  //     },
-  //     {
-  //       label: 'Logout',
-  //       href: '/logout',
-  //     },
-  //   ],
+  ] satisfies MainNavItem[],
+  links,
   footerNav: [
     {
       title: 'Help',
@@ -85,32 +63,24 @@ export const siteConfig = {
         },
       ],
     },
-  ],
+  ] satisfies FooterItem[],
   footerNaVSocail: [
     {
       title: 'Follow Us',
       items: [
         {
           title: 'Instgram',
-          href: '#',
+          href: links.instgram,
           //external: true,
           icon: 'instgram',
         },
         {
           title: 'Facebook',
-          href: '#',
+          href: links.facebook,
           //external: true,
           icon: 'facebook',
         },
-        {
-          title: 'GitHub',
-          href: 'https://github.com/MichaelMaherKamel/fetch',
-          //external: true,
-          icon: 'github',
-        },
       ],
     },
-  ],
+  ] satisfies FooterNavSocial[],
 }
-
-export type SiteConfig = typeof siteConfig
