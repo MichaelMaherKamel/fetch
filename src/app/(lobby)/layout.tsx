@@ -1,3 +1,4 @@
+import { SiteFooter } from '@/components/ui/siteFooter'
 import SiteHeader from '@/components/ui/siteHeader'
 
 interface LobbyLayoutProps {
@@ -9,6 +10,7 @@ const LobbyLayout = ({ children }: LobbyLayoutProps) => {
     <div className='relative flex min-h-screen flex-col'>
       <SiteHeader />
       <main className='flex-1'>{children}</main>
+      <SiteFooter />
     </div>
   )
 }
