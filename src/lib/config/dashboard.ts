@@ -8,26 +8,20 @@ export const dashboardConfig: DashboardConfig = {
   sidebarNav: [
     {
       title: 'Account',
-      href: '/dashboard/account',
+      href: '/account/settings',
       icon: 'user',
       items: [],
     },
     {
-      title: 'Stores',
-      href: '/dashboard/stores',
-      icon: 'store',
+      title: 'Appearance',
+      href: '/account/appearance',
+      icon: 'sunmoon',
       items: [],
     },
     {
       title: 'Billing',
-      href: '/dashboard/billing',
+      href: '/account/paymentmethod',
       icon: 'billing',
-      items: [],
-    },
-    {
-      title: 'Purchases',
-      href: '/dashboard/purchases',
-      icon: 'dollarSign',
       items: [],
     },
   ],

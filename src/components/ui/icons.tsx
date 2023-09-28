@@ -60,11 +60,13 @@ import {
   X,
   type LucideIcon,
   type LucideProps,
+  SunMoon,
 } from 'lucide-react'
 
 export type Icon = LucideIcon
 
 export const Icons = {
+  sunmoon: SunMoon,
   sun: SunMedium,
   moon: Moon,
   star: Star,

@@ -23,6 +23,12 @@ export interface NavItem {
   description?: string
 }
 
+// export interface AccountNavItem {
+//   title: string
+//   href?: string
+//   icon?: keyof typeof Icons
+// }
+
 export interface NavItemWithChildren extends NavItem {
   items: NavItemWithChildren[]
 }

@@ -23,6 +23,11 @@ export default function User() {
 
   if (status === 'loading') return <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />
 
+  const isMobile =
+    /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || (typeof window !== 'undefined' && window.innerWidth <= 768)
+
+  const deviceType = isMobile ? (/iPhone|iPad|iPod/i.test(navigator.userAgent) ? 'iPhone' : 'Android') : 'Computer'
+
   if (session) {
     const initials = getInitials(session.user?.name ?? '')
     return (
@@ -45,23 +50,23 @@ export default function User() {
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             <DropdownMenuItem asChild>
-              <Link href='/dashboard/account'>
+              <Link href='/account/settings'>
                 <Icons.user className='mr-2 h-4 w-4' aria-hidden='true' />
                 Account
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
-              <Link href='/dashboard/stores'>
+              <Link href='/dashboard'>
                 <Icons.terminal className='mr-2 h-4 w-4' aria-hidden='true' />
                 Dashboard
               </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem asChild disabled>
+            {/* <DropdownMenuItem asChild disabled>
               <Link href='/dashboard/settings'>
                 <Icons.settings className='mr-2 h-4 w-4' aria-hidden='true' />
                 Settings
               </Link>
-            </DropdownMenuItem>
+            </DropdownMenuItem> */}
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuItem asChild>

@@ -5,7 +5,7 @@ import { dashboardConfig } from '@/lib/config/dashboard'
 import { Icons } from '@/components/ui/icons'
 import { ThemeToggle } from './theme-toggle'
 
-import User from '@/components/auth/User'
+import User from '@/components/account/User'
 
 import { MainNav } from './main-nav'
 import { MobileNav } from './mobile-nav'

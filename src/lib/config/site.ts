@@ -3,8 +3,6 @@ import type { FooterItem, MainNavItem, FooterNavSocial } from '@/lib/types/index
 import { productCategories } from './products'
 import { slugify } from './utils'
 
-import { Icons } from '@/components/ui/icons'
-
 export type SiteConfig = typeof siteConfig
 
 const links = {
