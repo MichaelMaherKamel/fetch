@@ -1,6 +1,10 @@
 import { int, timestamp, mysqlTable, primaryKey, varchar, text, mysqlEnum } from 'drizzle-orm/mysql-core'
 import type { AdapterAccount } from '@auth/core/adapters'
 
+import { z } from 'zod'
+
+import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
+
 export const users = mysqlTable('user', {
   id: varchar('id', { length: 255 }).notNull().primaryKey(),
   name: varchar('name', { length: 255 }),
@@ -50,3 +54,13 @@ export const verificationTokens = mysqlTable(
     compoundKey: primaryKey(vt.identifier, vt.token),
   })
 )
+
+// // Schema for CRUD - used to validate API requests
+export const insertUserSchema = createInsertSchema(users)
+export const selectUserSchema = createSelectSchema(users)
+export const UserIdSchema = selectUserSchema.pick({ id: true })
+export const updateUserSchema = selectUserSchema
+
+export type User = z.infer<typeof selectUserSchema>
+export type NewUser = z.infer<typeof insertUserSchema>
+export type UserId = z.infer<typeof UserIdSchema>['id']
