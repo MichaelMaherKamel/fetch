@@ -18,7 +18,7 @@ const Lobby = () => {
       <section id='store' aria-labelledby='store-heading' className='snap-center space-y-6 py-6 md:pt-10 lg:pt-0'>
         <div className='group relative overflow-hidden rounded-md'>
           <AspectRatioWrapper>
-            <div className='absolute inset-0 z-10 bg-black/60 transition-colors group-hover:bg-black/70' />
+            <div className='absolute inset-0 z-10 bg-black/40 transition-colors group-hover:bg-black/50' />
             <Image
               src={siteConfig.ogImage}
               alt={siteConfig.description}
@@ -74,7 +74,7 @@ const Lobby = () => {
             <Link aria-label={`Go to ${category.title}`} key={category.title} href={`/shopping/${category.slug}`}>
               <div className='group relative overflow-hidden rounded-md'>
                 <AspectRatio ratio={4 / 5}>
-                  <div className='absolute inset-0 z-10 bg-black/60 transition-colors group-hover:bg-black/70' />
+                  <div className='absolute inset-0 z-10 bg-black/40 transition-colors group-hover:bg-black/50' />
                   <Image
                     src={category.image}
                     alt={category.title}
