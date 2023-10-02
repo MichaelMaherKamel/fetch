@@ -1,11 +1,13 @@
 'use client'
 
 import * as React from 'react'
-import Link from 'next/link'
-import type { MainNavItem } from '@/lib/types'
 
+import Link from 'next/link'
+
+import type { MainNavItem } from '@/lib/types'
 import { siteConfig } from '@/lib/config/site'
 import { cn } from '@/lib/utils'
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -15,7 +17,9 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
-import { Icons } from './icons'
+import User from '@/components/account/User'
+import { Icons } from '@/components/ui/icons'
+import { ThemeToggle } from '@/components/ui/theme-toggle'
 
 interface MainNavProps {
   items?: MainNavItem[]
@@ -23,57 +27,66 @@ interface MainNavProps {
 
 export function MainNav({ items }: MainNavProps) {
   return (
-    <div className='hidden gap-6 lg:flex'>
-      <Link aria-label='Home' href='/' className='hidden items-center space-x-2 lg:flex'>
-        <Icons.logo className='h-6 w-6' aria-hidden='true' />
-        <span className='hidden font-bold lg:inline-block'>{siteConfig.name}</span>
-      </Link>
-      <NavigationMenu>
-        <NavigationMenuList>
-          {items?.[0]?.items ? (
-            <NavigationMenuItem>
-              <NavigationMenuTrigger className='h-auto'>{items[0].title}</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className='p-6 md:w-[400px] lg:w-[500px] space-y-3'>
-                  {items[0].items.map((item) => (
-                    <ListItem key={item.title} title={item.title} href={item.href}>
-                      {item.description}
-                    </ListItem>
-                  ))}
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-          ) : null}
-          {items
-            ?.filter((item) => item.title !== items[0]?.title)
-            .map((item) =>
-              item?.items ? (
-                <NavigationMenuItem key={item.title}>
-                  <NavigationMenuTrigger className='h-auto capitalize'>{item.title}</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className='p-6 md:w-[400px] lg:w-[500px] space-y-3'>
-                      {item.items.map((item) => (
-                        <ListItem key={item.title} title={item.title} href={item.href}>
-                          {item.description}
-                        </ListItem>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              ) : (
-                item.href && (
+    <div className='container mx-auto px-4 h-16 flex items-center justify-between'>
+      <div className='flex items-center space-x-4'>
+        <Link aria-label='Home' href='/' className='items-center space-x-2 lg:flex'>
+          <Icons.logo className='h-6 w-6' aria-hidden='false' />
+          <span className='hidden font-bold lg:inline-block'>{siteConfig.name}</span>
+        </Link>
+        <NavigationMenu>
+          <NavigationMenuList>
+            {items?.[0]?.items ? (
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className='h-auto'>{items[0].title}</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className='p-6 md:w-[400px] lg:w-[500px] space-y-3'>
+                    {items[0].items.map((item) => (
+                      <ListItem key={item.title} title={item.title} href={item.href}>
+                        {item.description}
+                      </ListItem>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            ) : null}
+            {items
+              ?.filter((item) => item.title !== items[0]?.title)
+              .map((item) =>
+                item?.items ? (
                   <NavigationMenuItem key={item.title}>
-                    <Link href={item.href} legacyBehavior passHref>
-                      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 'h-auto')}>
-                        {item.title}
-                      </NavigationMenuLink>
-                    </Link>
+                    <NavigationMenuTrigger className='h-auto capitalize'>{item.title}</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className='p-6 md:w-[400px] lg:w-[500px] space-y-3'>
+                        {item.items.map((item) => (
+                          <ListItem key={item.title} title={item.title} href={item.href}>
+                            {item.description}
+                          </ListItem>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
                   </NavigationMenuItem>
+                ) : (
+                  item.href && (
+                    <NavigationMenuItem key={item.title}>
+                      <Link href={item.href} legacyBehavior passHref>
+                        <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 'h-auto')}>
+                          {item.title}
+                        </NavigationMenuLink>
+                      </Link>
+                    </NavigationMenuItem>
+                  )
                 )
-              )
-            )}
-        </NavigationMenuList>
-      </NavigationMenu>
+              )}
+          </NavigationMenuList>
+        </NavigationMenu>
+      </div>
+
+      <div className='flex items-center space-x-4'>
+        <nav className='flex items-center space-x-2'>
+          <ThemeToggle />
+          <User />
+        </nav>
+      </div>
     </div>
   )
 }

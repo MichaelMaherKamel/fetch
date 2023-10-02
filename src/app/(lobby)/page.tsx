@@ -71,7 +71,7 @@ const Lobby = () => {
             Choose a category and find the best products for you
           </Balancer>
         </div>
-        <div className='grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3'>
+        <div className='grid grid-cols-3 gap-3 md:grid-cols-3 lg:grid-cols-3'>
           {productCategories.map((category) => (
             <Link aria-label={`Go to ${category.title}`} key={category.title} href={`/shopping/${category.slug}`}>
               <div className='group relative overflow-hidden rounded-md'>
@@ -87,7 +87,7 @@ const Lobby = () => {
                   />
                 </AspectRatio>
                 <div className='absolute inset-0 z-20 flex items-center justify-center'>
-                  <h3 className='text-3xl font-medium capitalize text-slate-100 md:text-2xl'>{category.title}</h3>
+                  <h3 className='text-2xl font-medium capitalize text-slate-100 lg:text-3xl'>{category.title}</h3>
                 </div>
               </div>
             </Link>

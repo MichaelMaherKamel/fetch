@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -12,7 +13,9 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Button } from '@/components/ui/button'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import User from '@/components/account/User'
 import { Icons } from '@/components/ui/icons'
+import { ThemeToggle } from '@/components/ui/theme-toggle'
 
 interface MobileNavProps {
   mainNavItems?: MainNavItem[]
@@ -24,41 +27,67 @@ export function MobileNav({ mainNavItems, sidebarNavItems }: MobileNavProps) {
   const [isOpen, setIsOpen] = React.useState(false)
 
   return (
-    <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      <SheetTrigger asChild>
-        <Button
-          variant='ghost'
-          className='mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 lg:hidden'
-        >
-          <Icons.menu className='h-6 w-6' />
-          <span className='sr-only'>Toggle Menu</span>
-        </Button>
-      </SheetTrigger>
-      <SheetContent side='left' className='pl-1 pr-0'>
-        <div className='px-7'>
-          <Link aria-label='Home' href='/' className='flex items-center' onClick={() => setIsOpen(false)}>
-            <Icons.logo className='mr-2 h-4 w-4' aria-hidden='true' />
-            <span className='font-bold'>{siteConfig.name}</span>
-          </Link>
-        </div>
-        <ScrollArea className='my-4 h-[calc(100vh-8rem)] pb-10 pl-6'>
-          <div className='pl-1 pr-7'>
-            <Accordion type='single' collapsible className='w-full'>
-              {mainNavItems?.map((item, index) => (
-                <AccordionItem value={item.title} key={index}>
-                  <AccordionTrigger className='text-sm capitalize'>{item.title}</AccordionTrigger>
+    <div className='container mx-auto px-4 h-16 flex items-center justify-between'>
+      <Sheet open={isOpen} onOpenChange={setIsOpen}>
+        <SheetTrigger asChild>
+          <Button
+            variant='ghost'
+            className='mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 lg:hidden'
+          >
+            <Icons.menu className='h-6 w-6' />
+            <span className='sr-only'>Toggle Menu</span>
+          </Button>
+        </SheetTrigger>
+        <SheetContent side='left' className='pl-1 pr-0'>
+          <div className='px-7'>
+            <Link aria-label='Home' href='/' className='flex items-center' onClick={() => setIsOpen(false)}>
+              <Icons.logo className='mr-2 h-4 w-4' aria-hidden='true' />
+              <span className='font-bold'>{siteConfig.name}</span>
+            </Link>
+          </div>
+          <ScrollArea className='my-4 h-[calc(100vh-8rem)] pb-10 pl-6'>
+            <div className='pl-1 pr-7'>
+              <Accordion type='single' collapsible className='w-full'>
+                {mainNavItems?.map((item, index) => (
+                  <AccordionItem value={item.title} key={index}>
+                    <AccordionTrigger className='text-sm capitalize'>{item.title}</AccordionTrigger>
+                    <AccordionContent>
+                      <div className='flex flex-col space-y-2'>
+                        {item.items?.map((subItem, index) =>
+                          subItem.href ? (
+                            <MobileLink
+                              key={index}
+                              href={String(subItem.href)}
+                              pathname={pathname}
+                              setIsOpen={setIsOpen}
+                              disabled={subItem.disabled}
+                            >
+                              {subItem.title}
+                            </MobileLink>
+                          ) : (
+                            <div key={index} className='text-foreground/70 transition-colors'>
+                              {item.title}
+                            </div>
+                          )
+                        )}
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+                <AccordionItem value='sidebar'>
+                  <AccordionTrigger className='text-sm'>Account</AccordionTrigger>
                   <AccordionContent>
                     <div className='flex flex-col space-y-2'>
-                      {item.items?.map((subItem, index) =>
-                        subItem.href ? (
+                      {sidebarNavItems?.map((item, index) =>
+                        item.href ? (
                           <MobileLink
                             key={index}
-                            href={String(subItem.href)}
+                            href={String(item.href)}
                             pathname={pathname}
                             setIsOpen={setIsOpen}
-                            disabled={subItem.disabled}
+                            disabled={item.disabled}
                           >
-                            {subItem.title}
+                            {item.title}
                           </MobileLink>
                         ) : (
                           <div key={index} className='text-foreground/70 transition-colors'>
@@ -69,36 +98,22 @@ export function MobileNav({ mainNavItems, sidebarNavItems }: MobileNavProps) {
                     </div>
                   </AccordionContent>
                 </AccordionItem>
-              ))}
-              <AccordionItem value='sidebar'>
-                <AccordionTrigger className='text-sm'>Account</AccordionTrigger>
-                <AccordionContent>
-                  <div className='flex flex-col space-y-2'>
-                    {sidebarNavItems?.map((item, index) =>
-                      item.href ? (
-                        <MobileLink
-                          key={index}
-                          href={String(item.href)}
-                          pathname={pathname}
-                          setIsOpen={setIsOpen}
-                          disabled={item.disabled}
-                        >
-                          {item.title}
-                        </MobileLink>
-                      ) : (
-                        <div key={index} className='text-foreground/70 transition-colors'>
-                          {item.title}
-                        </div>
-                      )
-                    )}
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </div>
-        </ScrollArea>
-      </SheetContent>
-    </Sheet>
+              </Accordion>
+            </div>
+          </ScrollArea>
+        </SheetContent>
+      </Sheet>
+      <Link aria-label='Home' href='/' className='flex items-center space-x-2'>
+        <Icons.logo className='h-6 w-6' aria-hidden='false' />
+        <span className='font-bold lg:inline-block'>{siteConfig.name}</span>
+      </Link>
+      <div className='flex items-center space-x-4'>
+        <nav className='flex items-center space-x-2'>
+          <ThemeToggle />
+          <User />
+        </nav>
+      </div>
+    </div>
   )
 }
 
