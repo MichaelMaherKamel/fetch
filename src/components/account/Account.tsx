@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import axios from 'axios'
+import { Icons } from '../ui/icons'
 
 export default function Account() {
   const { data: session } = useSession()
@@ -40,8 +41,16 @@ export default function Account() {
     <div>
       <h1 className='text-3xl font-semibold mb-4'>{session ? `Welcome, ${session.user.name}!` : 'Welcome to FETCH'}</h1>
       {session ? <div>Signed In</div> : <div>You are not signed in</div>}
-      <p className='mt-4'>Device Type: {deviceType}</p>
-      <p>IP Address: {ipAddress}</p>
+
+      <div className='flex justify-start space-x-4 mt-4'>
+        <div className='flex items-center'>
+          {deviceType === 'Windows' ? <Icons.Laptop /> : deviceType === 'iPhone' ? <Icons.Iphone /> : <Icons.Android />}
+        </div>
+        <div>
+          <p>{deviceType}</p>
+          <p>IP Address: {ipAddress}</p>
+        </div>
+      </div>
     </div>
   )
 }
