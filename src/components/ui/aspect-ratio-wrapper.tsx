@@ -11,7 +11,7 @@ function AspectRatioWrapper({ children }: { children: React.ReactNode }) {
       if (window.innerWidth <= 768) {
         setAspectRatio(4 / 5)
       } else {
-        setAspectRatio(20 / 9)
+        setAspectRatio(16 / 9)
       }
     }
 

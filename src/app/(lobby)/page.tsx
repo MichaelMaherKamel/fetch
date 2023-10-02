@@ -17,17 +17,19 @@ const Lobby = () => {
     <Shell as='div' className='gap-12 snap-y snap-proximity'>
       <section id='store' aria-labelledby='store-heading' className='snap-center space-y-6 py-6 md:pt-10 lg:pt-0'>
         <div className='group relative overflow-hidden rounded-md'>
+          <div className='absolute inset-0 z-10 bg-black/5 transition-colors group-hover:bg-black/10' />
           <AspectRatioWrapper>
-            <div className='absolute inset-0 z-10 bg-black/40 transition-colors group-hover:bg-black/50' />
+            <div className='absolute inset-0 z-10 bg-black/5 transition-colors group-hover:bg-black/10' />
             <Image
               src={siteConfig.ogImage}
               alt={siteConfig.description}
-              sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+              sizes='(min-width: 1480px) 1336px, calc(94.83vw - 48px)'
               fill
               className='object-cover transition-transform group-hover:scale-105'
               priority
             />
           </AspectRatioWrapper>
+
           <div className='absolute inset-0 z-20 flex flex-col items-center justify-center'>
             <h3 className='text-center sm:text-2xl font-medium capitalize text-slate-100'>{siteConfig.description}</h3>
             <h3 className='text-center sm:text-2xl font-medium text-slate-100 mx-2 mt-2'>{siteConfig.goal}</h3>
@@ -74,11 +76,11 @@ const Lobby = () => {
             <Link aria-label={`Go to ${category.title}`} key={category.title} href={`/shopping/${category.slug}`}>
               <div className='group relative overflow-hidden rounded-md'>
                 <AspectRatio ratio={4 / 5}>
-                  <div className='absolute inset-0 z-10 bg-black/40 transition-colors group-hover:bg-black/50' />
+                  <div className='absolute inset-0 z-10 bg-black/5 transition-colors group-hover:bg-black/10' />
                   <Image
                     src={category.image}
                     alt={category.title}
-                    sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                    sizes='(min-width: 1480px) 437px, (min-width: 780px) 30.29vw, (min-width: 640px) calc(50vw - 38px), calc(100vw - 64px)'
                     fill
                     className='object-cover transition-transform group-hover:scale-105'
                     priority

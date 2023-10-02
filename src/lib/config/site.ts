@@ -15,7 +15,7 @@ export const siteConfig = {
   description: 'Empowering fashion, global platform uniting creators and consumers',
   goal: 'Buy and sell clothing products from local and global brands and stores',
   url: 'https://fetch-iota.vercel.app',
-  ogImage: '/images/acquirestore.webp',
+  ogImage: '/images/fetchStore.webp',
   mainNav: [
     ...productCategories.map((category) => ({
       title: category.title,
