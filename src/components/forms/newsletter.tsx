@@ -75,7 +75,7 @@ export function SubscribeToNewsletterForm() {
                 <Input placeholder='email address' className='pr-12' {...field} />
               </FormControl>
               <FormMessage />
-              <Button className='absolute right-[5.2px] top-[5.5px] z-20 h-7 w-7' size='icon' disabled={isPending}>
+              <Button className='absolute right-[5.2px] top-[4px] z-20 h-7 w-7' size='icon' disabled={isPending}>
                 {isPending ? (
                   <Icons.spinner className='h-3 w-3 animate-spin' aria-hidden='true' />
                 ) : (

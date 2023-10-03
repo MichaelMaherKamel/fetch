@@ -1,10 +1,11 @@
 import Link from 'next/link'
 
 import { siteConfig } from '@/lib/config/site'
-import { SubscribeToNewsletterForm } from '@/components/forms/newsletter'
 import { Icons } from '@/components/ui/icons'
+import { Shell } from '@/components/ui/shell'
+import { SubscribeToNewsletterForm } from '@/components/forms/newsletter'
+
 import { HeartFilledIcon } from '@radix-ui/react-icons'
-import { Shell } from './shell'
 
 export function SiteFooter() {
   return (
@@ -76,13 +77,15 @@ export function SiteFooter() {
           aria-labelledby='footer-bottom-heading'
           className='flex flex-nowrap space-x-4 items-center'
         >
-          <div className='text-sm leading-loose text-muted-foreground'>
-            Crafted by{' '}
+          <div className='flex text-sm leading-loose text-muted-foreground'>
+            <p className='flex items-center'>
+              Crafted with <HeartFilledIcon className='m-1' /> by{' '}
+            </p>
             <a
               href='https://github.com/MichaelMaherKamel'
               target='_blank'
               rel='noreferrer'
-              className='font-semibold transition-colors hover:text-foreground'
+              className='font-semibold transition-colors hover:text-foreground m-1'
             >
               Michael
             </a>
