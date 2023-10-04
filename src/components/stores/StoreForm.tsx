@@ -87,7 +87,7 @@ const StoreForm = ({ store, closeModal }: { store?: Store; closeModal: () => voi
             <FormItem>
               <FormLabel>Description</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Input {...field} value={field.value ?? ''} />
               </FormControl>
 
               <FormMessage />
