@@ -1,0 +1,1 @@
+ALTER TABLE `stores` MODIFY COLUMN `userId` varchar(255) NOT NULL;

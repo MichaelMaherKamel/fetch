@@ -15,6 +15,34 @@
       "when": 1695667165153,
       "tag": "0001_superb_hairball",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1696447050310,
+      "tag": "0002_young_moondragon",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1696447187766,
+      "tag": "0003_wealthy_secret_warriors",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1696452204569,
+      "tag": "0004_light_richard_fisk",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1696452794709,
+      "tag": "0005_flowery_reaper",
+      "breakpoints": true
     }
   ]
 }
