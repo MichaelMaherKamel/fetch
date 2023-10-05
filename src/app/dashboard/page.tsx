@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import Image from 'next/image'
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -14,7 +13,6 @@ import StoreSwitcher from '@/components/ui/dashboard-components/store-switcher'
 import { UserNav } from '@/components/ui/dashboard-components/user-nav'
 
 import { serverClient } from '@/lib/trpc/server'
-import { type Store } from '@/lib/db/schema/stores'
 
 export const metadata: Metadata = {
   title: 'Dashboard',

@@ -37,7 +37,7 @@ type PopoverTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverTrigger>
 
 interface TeamSwitcherProps extends PopoverTriggerProps {}
 
-const StoreSwitcher = React.memo(function StoreSwitcher({
+const StoreSwitcher = function StoreSwitcher({
   className,
   store,
   initialStores,
@@ -48,7 +48,7 @@ const StoreSwitcher = React.memo(function StoreSwitcher({
 }) {
   const [open, setOpen] = React.useState(false)
   const [showNewStoreDialog, setShowNewStoreDialog] = React.useState(false)
-  const [selectedStore, setSelectedStore] = React.useState<Store | null>(null) 
+  const [selectedStore, setSelectedStore] = React.useState<Store | null>(null)
 
   const closeModal = () => setShowNewStoreDialog(false)
 
@@ -130,6 +130,6 @@ const StoreSwitcher = React.memo(function StoreSwitcher({
       </DialogContent>
     </Dialog>
   )
-})
+}
 
 export default StoreSwitcher
