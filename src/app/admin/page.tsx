@@ -12,12 +12,14 @@ import StoreModal from '@/components/stores/StoreModal'
 
 //const [site] = (await serverClient.site.getSite()).site
 
+export const dynamic = 'force-dynamic'
+
 const AdminPage = async () => {
   const session = await getServerSession(authOptions)
   if (session) {
     const userId: string = session.user.id as string
     const { user } = await serverClient.users.getUserById({ id: userId })
-    const stores = await serverClient.stores.getStores()
+    const { stores } = await serverClient.stores.getStores()
     return (
       <>
         Signed in as {session.user?.name}
@@ -30,10 +32,16 @@ const AdminPage = async () => {
           <div>
             <h1>Not an Admin</h1>
             <h1>{user.email}</h1>
+            <h3> Create new store </h3>
+            <StoreModal />
           </div>
         )}
-        {stores.stores.length > 0 ? (
-          stores.stores.map((store: Store, index: number) => <h1 key={index}>{store.name}</h1>)
+        {stores.length > 0 ? (
+          stores.map((store: Store, index: number) => (
+            <h1 key={index}>
+              {store.id} {store.name}
+            </h1>
+          ))
         ) : (
           <>
             <h1>No stores</h1>

@@ -146,6 +146,9 @@ dependencies:
   framer-motion:
     specifier: ^10.16.4
     version: 10.16.4(react-dom@18.2.0)(react@18.2.0)
+  jotai:
+    specifier: ^2.4.3
+    version: 2.4.3(@types/react@18.2.24)(react@18.2.0)
   kirimase:
     specifier: ^0.0.17
     version: 0.0.17
@@ -6433,6 +6436,22 @@ packages:
 
   /jose@4.15.1:
     resolution: {integrity: sha512-CinpaEMmwb/59YG0N6SC3DY1imdTU5iNl08HPWR7NdyxACPeFuQbqjaocEjCDGq04KbnxSqQu702vL3ZTvKe5w==}
+    dev: false
+
+  /jotai@2.4.3(@types/react@18.2.24)(react@18.2.0):
+    resolution: {integrity: sha512-CSAHX9LqWG5WCrU8OgBoZbBJ+Bo9rQU0mPusEF4e0CZ/SNFgurG26vb3UpgvCSJZgYVcUQNiUBM5q86PA8rstQ==}
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      '@types/react': '>=17.0.0'
+      react: '>=17.0.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      '@types/react': 18.2.24
+      react: 18.2.0
     dev: false
 
   /js-beautify@1.14.9:

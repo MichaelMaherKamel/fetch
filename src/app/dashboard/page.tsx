@@ -10,21 +10,25 @@ import { MainNav } from '@/components/ui/dashboard-components/main-nav'
 import { Overview } from '@/components/ui/dashboard-components/overview'
 import { RecentSales } from '@/components/ui/dashboard-components/recent-sales'
 import { Search } from '@/components/ui/dashboard-components/search'
-import TeamSwitcher from '@/components/ui/dashboard-components/team-switcher'
+import StoreSwitcher from '@/components/ui/dashboard-components/store-switcher'
 import { UserNav } from '@/components/ui/dashboard-components/user-nav'
+
+import { serverClient } from '@/lib/trpc/server'
+import { type Store } from '@/lib/db/schema/stores'
 
 export const metadata: Metadata = {
   title: 'Dashboard',
-  description: 'Example dashboard app built using the components.',
+  description: 'User Dashboard to Check his Stores, Products and Orders',
 }
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const stores = await serverClient.stores.getStores()
   return (
     <>
       <div className='hidden flex-col md:flex'>
         <div className='border-b'>
           <div className='flex h-16 items-center px-4'>
-            <TeamSwitcher />
+            <StoreSwitcher initialStores={stores} />
             <div className='ml-auto flex items-center space-x-4'>
               <Search />
               <UserNav />

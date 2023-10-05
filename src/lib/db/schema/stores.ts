@@ -4,6 +4,8 @@ import { z } from 'zod'
 
 import { getStores } from '@/lib/api/stores/queries'
 
+import { serverClient } from '@/lib/trpc/server'
+
 export const stores = mysqlTable('stores', {
   id: serial('id').primaryKey(),
   userId: varchar('userId', { length: 191 }).notNull(),
@@ -12,7 +14,6 @@ export const stores = mysqlTable('stores', {
   slug: text('slug'),
   active: boolean('active').notNull().default(true),
   stripeAccountId: varchar('stripeAccountId', { length: 191 }),
-  createdAt: timestamp('createdAt').defaultNow(),
 })
 
 // Schema for stores - used to validate API requests
@@ -21,12 +22,20 @@ export const insertStoreSchema = createInsertSchema(stores)
 export const insertStoreParams = createSelectSchema(stores, {}).omit({
   id: true,
   userId: true,
+  slug: true,
+  active: true,
+  stripeAccountId: true,
+  createdAt: true,
 })
 
 export const updateStoreSchema = createSelectSchema(stores)
 
 export const updateStoreParams = createSelectSchema(stores, {}).omit({
   userId: true,
+  slug: true,
+  active: true,
+  stripeAccountId: true,
+  createdAt: true,
 })
 
 export const storeIdSchema = updateStoreSchema.pick({ id: true })
@@ -39,4 +48,6 @@ export type UpdateStoreParams = z.infer<typeof updateStoreParams>
 export type StoreId = z.infer<typeof storeIdSchema>['id']
 
 // this type infers the return from getStores() - meaning it will include any joins
-export type CompleteStore = Awaited<ReturnType<typeof getStores>>['stores'][number]
+// export type CompleteStore = Awaited<ReturnType<typeof getStores>>['stores'][number]
+
+export type CompleteStore = Awaited<ReturnType<(typeof serverClient.stores)['getStores']>>

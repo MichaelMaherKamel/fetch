@@ -1,0 +1,1 @@
+ALTER TABLE `stores` ADD `createdAt` timestamp DEFAULT (now());
