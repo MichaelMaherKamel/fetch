@@ -16,10 +16,12 @@ import { serverClient } from '@/lib/trpc/server'
 
 export const metadata: Metadata = {
   title: 'Dashboard',
-  description: 'User Dashboard to Check his Stores, Products and Orders',
+  description: 'User Dashboard to Check Stores, Products and Stats',
 }
 
-export default async function DashboardPage() {
+export const dynamic = 'force-dynamic'
+
+const DashboardPage = async () => {
   const stores = await serverClient.stores.getStores()
   return (
     <>
@@ -164,3 +166,5 @@ export default async function DashboardPage() {
     </>
   )
 }
+
+export default DashboardPage

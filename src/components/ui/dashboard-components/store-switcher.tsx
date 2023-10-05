@@ -35,7 +35,7 @@ import StoreForm from '@/components/stores/StoreForm'
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverTrigger>
 
-interface TeamSwitcherProps extends PopoverTriggerProps {}
+interface StoreSwitcher extends PopoverTriggerProps {}
 
 const StoreSwitcher = function StoreSwitcher({
   className,
