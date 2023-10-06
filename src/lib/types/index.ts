@@ -15,6 +15,7 @@ export interface Option {
 
 export interface NavItem {
   title: string
+  slug?: string
   href?: string
   disabled?: boolean
   external?: boolean

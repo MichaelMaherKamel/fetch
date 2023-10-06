@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 import { siteConfig } from '@/lib/config/site'
-import { dashboardConfig } from '@/lib/config/dashboard'
+import { accountdashboardConfig } from '@/lib/config/accountdashboard'
 
 import { MobileNav } from '@/components/ui/mobile-nav'
 import { MainNav } from '@/components/ui/main-nav'
@@ -41,7 +41,7 @@ function HeaderSelector() {
   return (
     <div>
       {isMobile ? (
-        <MobileNav mainNavItems={siteConfig.mainNav} sidebarNavItems={dashboardConfig.sidebarNav} />
+        <MobileNav mainNavItems={siteConfig.mainNav} sidebarNavItems={accountdashboardConfig.sidebarNav} />
       ) : (
         <MainNav items={siteConfig.mainNav} />
       )}

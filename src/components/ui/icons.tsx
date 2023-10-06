@@ -477,7 +477,7 @@ export const Icons = {
           height='1.3728397'
           x='-.17854984'
           y='-.18641987'
-          color-interpolation-filters='sRGB'
+          colorInterpolationFilters='sRGB'
         >
           <feGaussianBlur stdDeviation='.89144132' />
         </filter>
@@ -487,7 +487,7 @@ export const Icons = {
           height='1.3139703'
           x='-.15035776'
           y='-.15698515'
-          color-interpolation-filters='sRGB'
+          colorInterpolationFilters='sRGB'
         >
           <feGaussianBlur stdDeviation='.75068743' />
         </filter>
@@ -497,7 +497,7 @@ export const Icons = {
           height='1.3518181'
           x='-.20488247'
           y='-.17590905'
-          color-interpolation-filters='sRGB'
+          colorInterpolationFilters='sRGB'
         >
           <feGaussianBlur stdDeviation='.64787935' />
         </filter>
@@ -507,7 +507,7 @@ export const Icons = {
           height='1.3518181'
           x='-.2048822'
           y='-.17590905'
-          color-interpolation-filters='sRGB'
+          colorInterpolationFilters='sRGB'
         >
           <feGaussianBlur stdDeviation='.64787935' />
         </filter>
@@ -517,7 +517,7 @@ export const Icons = {
           height='1.3518181'
           x='-.20488247'
           y='-.17590905'
-          color-interpolation-filters='sRGB'
+          colorInterpolationFilters='sRGB'
         >
           <feGaussianBlur stdDeviation='.64787935' />
         </filter>
@@ -527,7 +527,7 @@ export const Icons = {
           height='1.3518181'
           x='-.2048822'
           y='-.17590905'
-          color-interpolation-filters='sRGB'
+          colorInterpolationFilters='sRGB'
         >
           <feGaussianBlur stdDeviation='.64787935' />
         </filter>
@@ -537,7 +537,7 @@ export const Icons = {
           height='1.3518181'
           x='-.20488247'
           y='-.17590905'
-          color-interpolation-filters='sRGB'
+          colorInterpolationFilters='sRGB'
         >
           <feGaussianBlur stdDeviation='.64787935' />
         </filter>
@@ -547,7 +547,7 @@ export const Icons = {
           height='1.3518181'
           x='-.20488247'
           y='-.17590905'
-          color-interpolation-filters='sRGB'
+          colorInterpolationFilters='sRGB'
         >
           <feGaussianBlur stdDeviation='.64787935' />
         </filter>
@@ -557,7 +557,7 @@ export const Icons = {
           height='1.3518181'
           x='-.2048822'
           y='-.17590905'
-          color-interpolation-filters='sRGB'
+          colorInterpolationFilters='sRGB'
         >
           <feGaussianBlur stdDeviation='.64787935' />
         </filter>
@@ -567,7 +567,7 @@ export const Icons = {
           height='1.3518181'
           x='-.20488247'
           y='-.17590905'
-          color-interpolation-filters='sRGB'
+          colorInterpolationFilters='sRGB'
         >
           <feGaussianBlur stdDeviation='.64787935' />
         </filter>
@@ -577,7 +577,7 @@ export const Icons = {
           height='1.3518181'
           x='-.2048822'
           y='-.17590905'
-          color-interpolation-filters='sRGB'
+          colorInterpolationFilters='sRGB'
         >
           <feGaussianBlur stdDeviation='.64787935' />
         </filter>
@@ -587,7 +587,7 @@ export const Icons = {
           height='1.3518181'
           x='-.20488247'
           y='-.17590905'
-          color-interpolation-filters='sRGB'
+          colorInterpolationFilters='sRGB'
         >
           <feGaussianBlur stdDeviation='.64787935' />
         </filter>
@@ -597,7 +597,7 @@ export const Icons = {
           height='2.4722613'
           x='-.01908215'
           y='-.73613063'
-          color-interpolation-filters='sRGB'
+          colorInterpolationFilters='sRGB'
         >
           <feGaussianBlur stdDeviation='.71203124' />
         </filter>
@@ -607,7 +607,7 @@ export const Icons = {
           height='1.1797011'
           x='-.01000185'
           y='-.08985053'
-          color-interpolation-filters='sRGB'
+          colorInterpolationFilters='sRGB'
         >
           <feGaussianBlur stdDeviation='.38774777' />
         </filter>
@@ -617,30 +617,30 @@ export const Icons = {
           height='1.0715491'
           x='-.07291915'
           y='-.03577453'
-          color-interpolation-filters='sRGB'
+          colorInterpolationFilters='sRGB'
         >
           <feGaussianBlur stdDeviation='14.424978' />
         </filter>
         <linearGradient id='c'>
           <stop offset='0' stop-color='#ececec' />
-          <stop offset='1' stop-color='#ececec' stop-opacity='0' />
+          <stop offset='1' stop-color='#ececec' stopOpacity='0' />
         </linearGradient>
         <linearGradient id='b'>
           <stop offset='0' stop-color='#fff' />
-          <stop offset='1' stop-color='#fff' stop-opacity='0' />
+          <stop offset='1' stop-color='#fff' stopOpacity='0' />
         </linearGradient>
         <linearGradient id='f'>
-          <stop offset='0' stop-color='#fff' stop-opacity='.75' />
-          <stop offset='1' stop-color='#fff' stop-opacity='0' />
+          <stop offset='0' stop-color='#fff' stopOpacity='.75' />
+          <stop offset='1' stop-color='#fff' stopOpacity='0' />
         </linearGradient>
         <linearGradient id='e'>
           <stop offset='0' stop-color='navy' />
           <stop offset='.17294207' stop-color='#4d4d4d' />
           <stop offset='.35276628' stop-color='#00f' />
-          <stop offset='1' stop-color='navy' stop-opacity='0' />
+          <stop offset='1' stop-color='navy' stopOpacity='0' />
         </linearGradient>
         <linearGradient id='a'>
-          <stop offset='0' stop-color='#333' stop-opacity='0' />
+          <stop offset='0' stop-color='#333' stopOpacity='0' />
           <stop offset='1' />
         </linearGradient>
         <linearGradient id='d'>

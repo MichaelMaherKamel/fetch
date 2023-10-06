@@ -16,12 +16,15 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 
+import { Skeleton } from '@/components/ui/skeleton'
+
 import { getInitials } from '@/lib/config/utils'
 
 export default function User() {
   const { data: session, status } = useSession()
 
-  if (status === 'loading') return <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />
+  // if (status === 'loading') return <Icons.spinner className='mr-2 h-4 w-4 animate-spin' /> // If you want to show a loading spinner until the session is loaded
+  if (status === 'loading') return <Skeleton className='h-8 w-8 rounded-full' /> // If you want to show a skelton until the session is loaded
 
   const isMobile =
     /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || (typeof window !== 'undefined' && window.innerWidth <= 768)
@@ -61,12 +64,6 @@ export default function User() {
                 Dashboard
               </Link>
             </DropdownMenuItem>
-            {/* <DropdownMenuItem asChild disabled>
-              <Link href='/dashboard/settings'>
-                <Icons.settings className='mr-2 h-4 w-4' aria-hidden='true' />
-                Settings
-              </Link>
-            </DropdownMenuItem> */}
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuItem asChild>
