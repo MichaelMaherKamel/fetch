@@ -1,9 +1,9 @@
 'use client'
 
 import * as React from 'react'
+
 import { CaretSortIcon, CheckIcon, PlusCircledIcon } from '@radix-ui/react-icons'
-import { cn } from '@/lib/utils'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+
 import { Button } from '@/components/ui/button'
 import {
   Command,
@@ -23,15 +23,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 
-import { CompleteStore, type Store } from '@/lib/db/schema/stores'
+import { cn } from '@/lib/utils'
 import { trpc } from '@/lib/trpc/client'
-
 import StoreForm from '@/components/stores/StoreForm'
+import { CompleteStore, type Store } from '@/lib/db/schema/stores'
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverTrigger>
 
@@ -71,10 +68,10 @@ const StoreSwitcher = function StoreSwitcher({
             variant='outline'
             role='combobox'
             aria-expanded={open}
-            aria-label='Select a team'
-            className={cn('w-[200px] justify-between', className)}
+            aria-label='Select a store'
+            className={cn('justify-between', className)}
           >
-            {selectedStore?.name ?? 'Select a Store'}
+            {selectedStore?.name ?? 'Stores'}
             <CaretSortIcon className='ml-auto h-4 w-4 shrink-0 opacity-50' />
           </Button>
         </PopoverTrigger>

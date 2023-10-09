@@ -1,9 +1,9 @@
 import Link from 'next/link'
 
 import { Icons } from '@/components/ui/icons'
-import StoreSwitcher from '@/components/ui/dashboard-components/store-switcher'
-import { ThemeToggle } from '@/components/ui/theme-toggle'
 import User from '@/components/account/User'
+import { ThemeToggle } from '@/components/ui/theme-toggle'
+import StoreSwitcher from '@/components/dashboard/store-switcher'
 
 import { siteConfig } from '@/lib/config/site'
 import { serverClient } from '@/lib/trpc/server'

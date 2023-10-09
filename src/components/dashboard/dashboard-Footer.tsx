@@ -1,5 +1,4 @@
 import { HeartFilledIcon } from '@radix-ui/react-icons'
-import { Shell } from '@/components/ui/shell'
 
 export const DashboardFooter = () => {
   return (

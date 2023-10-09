@@ -1,5 +1,5 @@
-import { DashboardHeader } from '@/components/ui/dashboard-components/dashboard-Header'
-import { DashboardFooter } from '@/components/ui/dashboard-components/dashboard-Footer'
+import { DashboardHeader } from '@/components/dashboard/dashboard-Header'
+import { DashboardFooter } from '@/components/dashboard/dashboard-Footer'
 
 interface DashboardLayoutProps {
   children: React.ReactNode
