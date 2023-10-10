@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 import { CaretSortIcon, CheckIcon, PlusCircledIcon } from '@radix-ui/react-icons'
 
@@ -14,15 +15,7 @@ import {
   CommandList,
   CommandSeparator,
 } from '@/components/ui/command'
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 
 import { cn } from '@/lib/utils'
@@ -49,9 +42,17 @@ const StoreSwitcher = function StoreSwitcher({
 
   const closeModal = () => setShowNewStoreDialog(false)
 
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const selectedSearchedStore = searchParams.get('store')
+
   const handleSelectStore = (store: Store) => {
     setSelectedStore(store)
     setOpen(false)
+    // router.push(`?store=${store.name}`, { scroll: false })
+    router.push(`?${new URLSearchParams({ store: store.name }).toString()}`, {
+      scroll: false,
+    })
   }
 
   const getStores = trpc.stores.getStores.useQuery(undefined, {
@@ -71,7 +72,7 @@ const StoreSwitcher = function StoreSwitcher({
             aria-label='Select a store'
             className={cn('justify-between', className)}
           >
-            {selectedStore?.name ?? 'Stores'}
+            {(selectedStore?.name || selectedSearchedStore) ?? 'Stores '}
             <CaretSortIcon className='ml-auto h-4 w-4 shrink-0 opacity-50' />
           </Button>
         </PopoverTrigger>
@@ -88,6 +89,7 @@ const StoreSwitcher = function StoreSwitcher({
                     className='text-sm'
                   >
                     {store.name}
+
                     <CheckIcon
                       className={cn(
                         'ml-auto h-4 w-4',

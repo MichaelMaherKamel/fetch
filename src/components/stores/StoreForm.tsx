@@ -11,13 +11,9 @@ import { Button } from '../ui/button'
 import { z } from 'zod'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
-// import { useToast } from "@/components/ui/use-toast";
 
-const StoreForm = ({ store, closeModal }: { store?: Store; closeModal: () => void }) => {
-  // const { toast } = useToast();
-
+const StoreForm = ({ store, closeModal }: { store?: Store; closeModal?: () => void }) => {
   const editing = !!store?.id
-
   const router = useRouter()
   const utils = trpc.useContext()
 
@@ -35,12 +31,7 @@ const StoreForm = ({ store, closeModal }: { store?: Store; closeModal: () => voi
   const onSuccess = (action: 'create' | 'update' | 'delete') => {
     utils.stores.getStores.invalidate()
     router.refresh()
-    closeModal()
-    // toast({
-    //   title: 'Success',
-    //   description: `Store ${action}d!`,
-    //   variant: "default",
-    // });
+    closeModal?.()
     toast.success(`Store ${action}d! successfully 🎉`)
   }
 
