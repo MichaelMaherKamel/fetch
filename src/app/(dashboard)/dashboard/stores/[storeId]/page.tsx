@@ -12,7 +12,7 @@ interface StorePageProps {
   }
 }
 
-const StorePage = async ({ children, params }: StorePageProps) => {
+export default async function StorePage({ children, params }: StorePageProps) {
   const StoreID = Number(params.storeId)
   const stores = await serverClient.stores.getStores()
   const store = stores.stores.find((store) => store.id === StoreID)
@@ -29,5 +29,3 @@ const StorePage = async ({ children, params }: StorePageProps) => {
     </Shell>
   )
 }
-
-export default StorePage
