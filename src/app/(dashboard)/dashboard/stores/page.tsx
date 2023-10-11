@@ -40,7 +40,7 @@ export default async function DashboardPage(props: Props) {
           <Alert>
             <Icons.warning className='h-4 w-4' aria-hidden='true' />
             <AlertTitle className='flex justify-between'>No Stores found!</AlertTitle>
-            <AlertDescription>Clicking on the Create Store button to create a New Store</AlertDescription>
+            <AlertDescription>Click on Create Store button to create a New Store</AlertDescription>
           </Alert>
         </div>
       </Shell>
@@ -57,7 +57,7 @@ export default async function DashboardPage(props: Props) {
           </div>
           <div className='grid gap-4 md:grid-cols-3 lg:grid-cols-4'>
             {stores.stores.map((store, index) => {
-              return <StoreCard key={index} store={store} route={`/dashboard/stores/${store.name}`} />
+              return <StoreCard key={index} store={store} route={`/dashboard/stores/${store.id}`} />
             })}
           </div>
         </div>

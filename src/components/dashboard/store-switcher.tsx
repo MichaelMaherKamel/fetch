@@ -29,11 +29,11 @@ interface StoreSwitcher extends PopoverTriggerProps {}
 
 const StoreSwitcher = function StoreSwitcher({
   className,
-  store,
+  storeId,
   initialStores,
 }: {
   className?: string
-  store?: Store
+  storeId?: Number
   initialStores?: CompleteStore
 }) {
   const [open, setOpen] = React.useState(false)
@@ -50,9 +50,10 @@ const StoreSwitcher = function StoreSwitcher({
     setSelectedStore(store)
     setOpen(false)
     // router.push(`?store=${store.name}`, { scroll: false })
-    router.push(`?${new URLSearchParams({ store: store.name }).toString()}`, {
-      scroll: false,
-    })
+    // router.push(`?${new URLSearchParams({ store: store.name }).toString()}`, {
+    //   scroll: false,
+    // })
+    router.push(`/dashboard/stores/${store.id}`, { scroll: false })
   }
 
   const getStores = trpc.stores.getStores.useQuery(undefined, {
@@ -61,7 +62,7 @@ const StoreSwitcher = function StoreSwitcher({
     refetchOnReconnect: false,
   })
 
-  const SearchedStore = getStores.data?.stores.find((store) => store.name === selectedSearchedStore)
+  const StorePassed = getStores.data?.stores.find((store) => store.id === storeId)
 
   return (
     <Dialog open={showNewStoreDialog} onOpenChange={setShowNewStoreDialog}>
@@ -74,7 +75,7 @@ const StoreSwitcher = function StoreSwitcher({
             aria-label='Select a store'
             className={cn('justify-between', className)}
           >
-            {(selectedStore?.name || SearchedStore?.name) ?? 'Stores '}
+            {(selectedStore?.name || StorePassed?.name) ?? 'Stores '}
             <CaretSortIcon className='ml-auto h-4 w-4 shrink-0 opacity-50' />
           </Button>
         </PopoverTrigger>
@@ -126,7 +127,7 @@ const StoreSwitcher = function StoreSwitcher({
           <DialogTitle>Create Store</DialogTitle>
         </DialogHeader>
         <div className='px-5 pb-5'>
-          <StoreForm closeModal={closeModal} store={store} />
+          <StoreForm closeModal={closeModal} />
         </div>
       </DialogContent>
     </Dialog>
