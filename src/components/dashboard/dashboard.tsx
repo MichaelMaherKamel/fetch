@@ -8,6 +8,8 @@ import StoreSwitcher from './store-switcher'
 
 import { type Store } from '@/lib/db/schema/stores'
 import { serverClient } from '@/lib/trpc/server'
+import Link from 'next/link'
+import StoreModal from '../stores/StoreModal'
 
 type Props = {
   searchParams: { [key: string]: string | string[] | undefined }
@@ -39,6 +41,9 @@ const Dashboard = async (props: Props) => {
           </TabsContent>
           <TabsContent value='settings' className='space-y-4'>
             <StoreSettings store={store} />
+            {/* <StoreModal store={store} /> */}
+
+            <h1>Store: {store?.name}</h1>
           </TabsContent>
           <TabsContent value='products' className='space-y-4'>
             <ProductsTab />

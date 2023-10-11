@@ -25,23 +25,39 @@ export const insertStoreParams = createSelectSchema(stores, {}).omit({
   slug: true,
   active: true,
   stripeAccountId: true,
-  createdAt: true,
 })
 
-export const updateStoreSchema = createSelectSchema(stores)
+export const updateStoreSchema = createSelectSchema(stores, {}).omit({
+  userId: true,
+  slug: true,
+  active: true,
+  stripeAccountId: true,
+})
 
 export const updateStoreParams = createSelectSchema(stores, {}).omit({
   userId: true,
   slug: true,
   active: true,
   stripeAccountId: true,
-  createdAt: true,
+})
+
+export const updateIsActiveStoreSchema = createSelectSchema(stores, {}).omit({
+  userId: true,
+  slug: true,
+  stripeAccountId: true,
+})
+
+export const updateIsActiveStoreParams = createSelectSchema(stores, {}).omit({
+  userId: true,
+  slug: true,
+  stripeAccountId: true,
 })
 
 export const storeIdSchema = updateStoreSchema.pick({ id: true })
 
 // Types for stores - used to type API request params and within Components
 export type Store = z.infer<typeof updateStoreSchema>
+export type IsActiveStore = z.infer<typeof updateIsActiveStoreSchema>
 export type NewStore = z.infer<typeof insertStoreSchema>
 export type NewStoreParams = z.infer<typeof insertStoreParams>
 export type UpdateStoreParams = z.infer<typeof updateStoreParams>

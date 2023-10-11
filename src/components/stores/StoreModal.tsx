@@ -33,8 +33,8 @@ export default function StoreModal({ store, emptyState }: { store?: Store; empty
             New Store
           </Button>
         ) : (
-          <Button variant={editing ? 'ghost' : 'outline'} size={editing ? 'sm' : 'icon'}>
-            {editing ? 'Edit' : '+'}
+          <Button variant={editing ? 'ghost' : 'outline'} size={editing ? 'sm' : 'sm'}>
+            {editing ? 'Edit' : 'Create Store'}
           </Button>
         )}
       </DialogTrigger>

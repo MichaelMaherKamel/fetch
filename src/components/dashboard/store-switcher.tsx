@@ -61,6 +61,8 @@ const StoreSwitcher = function StoreSwitcher({
     refetchOnReconnect: false,
   })
 
+  const SearchedStore = getStores.data?.stores.find((store) => store.name === selectedSearchedStore)
+
   return (
     <Dialog open={showNewStoreDialog} onOpenChange={setShowNewStoreDialog}>
       <Popover open={open} onOpenChange={setOpen}>
@@ -72,7 +74,7 @@ const StoreSwitcher = function StoreSwitcher({
             aria-label='Select a store'
             className={cn('justify-between', className)}
           >
-            {(selectedStore?.name || selectedSearchedStore) ?? 'Stores '}
+            {(selectedStore?.name || SearchedStore?.name) ?? 'Stores '}
             <CaretSortIcon className='ml-auto h-4 w-4 shrink-0 opacity-50' />
           </Button>
         </PopoverTrigger>

@@ -61,6 +61,7 @@ import {
   type LucideIcon,
   type LucideProps,
   SunMoon,
+  AlertOctagon,
 } from 'lucide-react'
 
 export type Icon = LucideIcon
@@ -101,7 +102,7 @@ export const Icons = {
   send: Send,
   copy: Copy,
   downlaod: Download,
-  warning: AlertTriangle,
+  warning: AlertOctagon,
   search: Search,
   filter: Filter,
   alarm: AlarmClock,

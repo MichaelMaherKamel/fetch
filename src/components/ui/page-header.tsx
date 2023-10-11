@@ -59,7 +59,7 @@ export const PageHeader = ({
         {title}
       </Title>
       {description && (
-        <Description as={descriptionAs} className={cn(headerDescriptionVariants({ size }))}>
+        <Description as={descriptionAs} className={cn('mb-5', headerDescriptionVariants({ size }))}>
           {description}
         </Description>
       )}
