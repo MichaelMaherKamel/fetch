@@ -78,6 +78,27 @@
       "when": 1696532175476,
       "tag": "0010_clear_gambit",
       "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "5",
+      "when": 1697138095743,
+      "tag": "0011_gifted_sumo",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "5",
+      "when": 1697140647664,
+      "tag": "0012_white_khan",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "5",
+      "when": 1697146138272,
+      "tag": "0013_clear_amazoness",
+      "breakpoints": true
     }
   ]
 }

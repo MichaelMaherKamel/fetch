@@ -1,8 +1,10 @@
-import { varchar, text, serial, boolean, timestamp, mysqlTable } from 'drizzle-orm/mysql-core'
-import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 
-import { getStores } from '@/lib/api/stores/queries'
+import { products } from '@/lib/db/schema/products'
+
+import { relations } from 'drizzle-orm'
+import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
+import { varchar, serial, text, mysqlTable, boolean } from 'drizzle-orm/mysql-core'
 
 import { serverClient } from '@/lib/trpc/server'
 
@@ -15,6 +17,10 @@ export const stores = mysqlTable('stores', {
   active: boolean('active').notNull().default(true),
   stripeAccountId: varchar('stripeAccountId', { length: 191 }),
 })
+
+export const storeRelations = relations(stores, ({ many }) => ({
+  products: many(products),
+}))
 
 // Schema for stores - used to validate API requests
 export const insertStoreSchema = createInsertSchema(stores)

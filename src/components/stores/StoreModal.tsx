@@ -33,7 +33,11 @@ export default function StoreModal({ store, emptyState }: { store?: Store; empty
             New Store
           </Button>
         ) : (
-          <Button variant={editing ? 'ghost' : 'outline'} size={editing ? 'sm' : 'sm'}>
+          <Button
+            className='transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300'
+            variant={editing ? 'ghost' : 'outline'}
+            size={editing ? 'sm' : 'sm'}
+          >
             {editing ? 'Edit' : 'Create Store'}
           </Button>
         )}
