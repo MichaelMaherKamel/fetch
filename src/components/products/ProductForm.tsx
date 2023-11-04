@@ -278,28 +278,3 @@ const ProductForm = ({ product, closeModal }: { product?: Product; closeModal: (
 }
 
 export default ProductForm
-
-{
-  /* <Button type='submit' className='mr-1' disabled={isCreating || isUpdating || isPending}>
-{isPending ? (
-  <>
-    <Icons.spinner className='mr-2 h-4 w-4 animate-spin' aria-hidden='true' />
-    Loading...
-  </>
-) : (
-  'Submit'
-)}
-</Button>
-{editing ? (
-<Button type='button' variant={'destructive'} onClick={() => deleteStore({ id: store.id })}>
-  {isDeleting ? (
-    <>
-      Deleting...
-      <Icons.spinner className='ml-2 h-4 w-4 animate-spin' aria-hidden='true' />
-    </>
-  ) : (
-    <>Delete</>
-  )}
-</Button>
-) : null} */
-}
