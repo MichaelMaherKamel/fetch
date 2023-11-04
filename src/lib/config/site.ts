@@ -1,7 +1,7 @@
 import type { FooterItem, MainNavItem, FooterNavSocial } from '@/lib/types/index'
 
 import { productCategories } from './products'
-import { slugify } from './utils'
+import { slugify } from '@/lib/utils'
 
 export type SiteConfig = typeof siteConfig
 

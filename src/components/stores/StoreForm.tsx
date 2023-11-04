@@ -1,5 +1,7 @@
 'use client'
 
+import * as React from 'react'
+
 import { Store, NewStoreParams, insertStoreParams } from '@/lib/db/schema/stores'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -12,10 +14,13 @@ import { z } from 'zod'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 
+
 const StoreForm = ({ store, closeModal }: { store?: Store; closeModal?: () => void }) => {
   const editing = !!store?.id
   const router = useRouter()
   const utils = trpc.useContext()
+
+  const [isPending, startTransition] = React.useTransition()
 
   const form = useForm<z.infer<typeof insertStoreParams>>({
     // latest Zod release has introduced a TS error with zodResolver
@@ -33,6 +38,11 @@ const StoreForm = ({ store, closeModal }: { store?: Store; closeModal?: () => vo
     router.refresh()
     closeModal?.()
     toast.success(`Store ${action}d! successfully 🎉`)
+  }
+
+  const onFailure = () => {
+    router.refresh()
+    toast.error(`Store name already exists! 😢`)
   }
 
   const { mutate: createStore, isLoading: isCreating } = trpc.stores.createStore.useMutation({

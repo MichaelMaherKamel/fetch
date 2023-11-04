@@ -55,7 +55,7 @@ export function AppearanceForm() {
                   <select
                     className={cn(
                       buttonVariants({ variant: 'outline' }),
-                      'w-[200px] appearance-none bg-transparent font-normal'
+                      'w-[200px] appearance-none bg-transparent font-normal ml-1'
                     )}
                     {...field}
                   >

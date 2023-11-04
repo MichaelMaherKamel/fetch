@@ -1,6 +1,8 @@
 import { type z } from 'zod'
 import { type Icons } from '@/components/ui/icons'
 
+import { type FileWithPath } from 'react-dropzone'
+
 export interface StoredFile {
   id: string
   name: string
@@ -66,4 +68,8 @@ export interface StoredFile {
   id: string
   name: string
   url: string
+}
+
+export type FileWithPreview = FileWithPath & {
+  preview: string
 }

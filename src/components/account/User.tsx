@@ -18,7 +18,7 @@ import {
 
 import { Skeleton } from '@/components/ui/skeleton'
 
-import { getInitials } from '@/lib/config/utils'
+import { getInitials } from '@/lib/utils'
 
 export default function User() {
   const { data: session, status } = useSession()

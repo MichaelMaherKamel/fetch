@@ -4,6 +4,7 @@ import { env } from "@/lib/env.mjs";
  
 // Create the connection
 export const connection = connect({
+  // url: env.DATABASE_URL
   url: env.DATABASE_URL
 });
  

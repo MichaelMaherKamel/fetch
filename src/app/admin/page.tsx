@@ -9,6 +9,7 @@ import SignIn from '@/components/account/SignIn'
 import { type Store } from '@/lib/db/schema/stores'
 // import StoreModal from '@/components/modals/storeModal'
 import StoreModal from '@/components/stores/StoreModal'
+import UploadButton from '@/components/products/uploadButton'
 
 //const [site] = (await serverClient.site.getSite()).site
 
@@ -34,6 +35,7 @@ const AdminPage = async () => {
             <h1>{user.email}</h1>
             <h3> Create new store </h3>
             <StoreModal />
+            <UploadButton isSubscribed={true} />
           </div>
         )}
         {stores.length > 0 ? (

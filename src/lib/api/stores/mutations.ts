@@ -11,14 +11,29 @@ import {
 } from '@/lib/db/schema/stores'
 import { getUserAuth } from '@/lib/auth/utils'
 
+// export async function storeWithSameName(name: string) {
+//   const storeWithSameName = await db.select({ name: stores.name }).from(stores).where(eq(stores.name, name))
+//   if (storeWithSameName) {
+//     throw new Error('Store with the same name already exists')
+//   }
+// }
+
+export const storeWithSameName = async (name: string) => {
+  const storeWithSameName = await db.select({ name: stores.name }).from(stores).where(eq(stores.name, name))
+  if (storeWithSameName) {
+    throw new Error('Store with the same name already exists')
+  }
+}
+
 export const createStore = async (store: NewStoreParams) => {
   const { session } = await getUserAuth()
   const newStore = insertStoreSchema.parse({ ...store, userId: session?.user.id! })
+
   try {
     await db.insert(stores).values(newStore)
     return { success: true }
   } catch (err) {
-    const message = (err as Error).message ?? 'Error while creating store, please try again'
+    const message = (err as Error).message ?? 'Error while creating a store, please try again'
     console.error(message)
     return { error: message }
   }
