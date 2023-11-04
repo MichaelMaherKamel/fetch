@@ -10,7 +10,7 @@ export const products = mysqlTable('products', {
   id: serial('id').primaryKey(),
   name: varchar('name', { length: 191 }).notNull(),
   description: text('description'),
-  images: json('images').$type<StoredFile[] | null>().default(null),
+  images: json('images').$type<StoredFile[]>(),
   category: mysqlEnum('category', ['Women', 'Men', 'Kids']).notNull().default('Women'),
   subcategory: varchar('subcategory', { length: 191 }),
   price: decimal('price', { precision: 10, scale: 2 }).notNull().default('0'),
@@ -42,8 +42,7 @@ export const productSchema = z.object({
       return true
     }, 'Must be an array of File')
     .optional()
-    .nullable()
-    .default(null),
+    .nullable(),
 })
 
 // Schema for products - used to validate API requests
@@ -72,8 +71,7 @@ export const insertProductSchema = createInsertSchema(products, {
     })
     .array()
     .optional()
-    .nullable()
-    .default(null),
+    .nullable(),
 }).omit({
   id: true,
   createdAt: true,
@@ -103,8 +101,7 @@ export const insertProductParams = createSelectSchema(products, {
     })
     .array()
     .optional()
-    .nullable()
-    .default(null),
+    .nullable(),
 }).omit({
   id: true,
   createdAt: true,
@@ -134,8 +131,7 @@ export const updateProductSchema = createSelectSchema(products, {
     })
     .array()
     .optional()
-    .nullable()
-    .default(null),
+    .nullable(),
 }).omit({
   createdAt: true,
 })
@@ -164,8 +160,7 @@ export const updateProductParams = createSelectSchema(products, {
     })
     .array()
     .optional()
-    .nullable()
-    .default(null),
+    .nullable(),
 }).omit({
   createdAt: true,
 })

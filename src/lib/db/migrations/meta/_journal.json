@@ -127,6 +127,13 @@
       "when": 1699093156464,
       "tag": "0017_wide_master_chief",
       "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "5",
+      "when": 1699097706999,
+      "tag": "0018_exotic_iron_patriot",
+      "breakpoints": true
     }
   ]
 }
