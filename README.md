@@ -7,11 +7,13 @@
 
 Online marketplace built using Next.js App Router, which allows users to purchase products, sign up and list their own products for sale. Users can create stores, manage products and collect payment.
 
-Key features:
+## Tech Stack
 
-- Next.js App Router with React Server Components
-- tRPC
-- PlanetScale MySQL database with Drizzle ORM
-- UploadThing for typesafe file uploads (e.g., product images)
-- User authentication with AuthJs or NextAuth
-- shadcn/ui
+Framework: Next.js 14
+Styling: Tailwind CSS
+User Management: AuthJs or NextAuth
+ORM: Drizzle ORM
+UI Components: shadcn/ui
+Email: React Email
+File Uploads: Uploadthing
+Payments infrastructure: Stripe
