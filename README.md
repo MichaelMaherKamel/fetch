@@ -9,11 +9,12 @@ Online marketplace built using Next.js App Router, which allows users to purchas
 
 ## Tech Stack
 
-Framework: Next.js 14
-Styling: Tailwind CSS
-User Management: AuthJs or NextAuth
-ORM: Drizzle ORM
-UI Components: shadcn/ui
-Email: React Email
-File Uploads: Uploadthing
-Payments infrastructure: Stripe
+- Framework: NextJs 14
+- API Endpoint handler: tRPC
+- Styling: Tailwind CSS
+- User Management: AuthJs or NextAuth
+- ORM: Drizzle ORM
+- UI Components: shadcn/ui
+- Email: React Email
+- File Uploads: uploadthing
+- Payments infrastructure: Stripe
