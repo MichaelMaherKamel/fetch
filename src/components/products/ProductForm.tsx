@@ -39,7 +39,15 @@ import { isArrayOfFile } from '@/lib/utils'
 
 const { useUploadThing } = generateReactHelpers<OurFileRouter>()
 
-const ProductForm = ({ product, closeModal }: { product?: Product; closeModal: () => void }) => {
+const ProductForm = ({
+  product,
+  closeModal,
+  storeId,
+}: {
+  product?: Product
+  closeModal?: () => void
+  storeId: number
+}) => {
   const [files, setFiles] = React.useState<FileWithPreview[] | null>(null)
   const { data: stores } = trpc.stores.getStores.useQuery()
   const [isPending, startTransition] = React.useTransition()
@@ -63,8 +71,9 @@ const ProductForm = ({ product, closeModal }: { product?: Product; closeModal: (
 
   const onSuccess = (action: 'create' | 'update' | 'delete') => {
     utils.products.getProducts.invalidate()
-    router.refresh()
-    closeModal()
+    router.push(`/dashboard/stores/${storeId}/products`)
+    // router.refresh()
+    // closeModal()
     toast.success(`Product ${action}d! successfully 🎉`)
   }
 
@@ -101,7 +110,7 @@ const ProductForm = ({ product, closeModal }: { product?: Product; closeModal: (
           subcategory: data.subcategory,
           price: data.price,
           inventory: data.inventory,
-          storeId: 1,
+          storeId: storeId,
           images: images,
           // images: images, // Use product.images if available, otherwise use the newly uploaded images
         }

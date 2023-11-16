@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 
 import { Shell } from '@/components/ui/shell'
-import Dashboard from '@/components/dashboard/dashboard'
+import { StoreSettings } from '@/components/dashboard/tabs/settingsTab'
 
 import { serverClient } from '@/lib/trpc/server'
 
@@ -22,7 +22,7 @@ export default async function StorePage({ params }: StorePageProps) {
     <Shell variant='sidebar' className='gap-4'>
       <div className='flex items-center space-x-4'></div>
       <div className='space-y-4 overflow-hidden'>
-        <Dashboard storeId={StoreID} />
+        <StoreSettings store={store} />
       </div>
     </Shell>
   )
