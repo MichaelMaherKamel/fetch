@@ -12,9 +12,6 @@ const nextConfig = {
   images: {
     domains: ['uploadthing.com', 'utfs.io'],
   },
-  experimental: {
-    ppr: true,
-  },
 }
 module.exports = nextConfig
 
