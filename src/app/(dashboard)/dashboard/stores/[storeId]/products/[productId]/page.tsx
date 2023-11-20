@@ -33,9 +33,7 @@ export default async function UpdateProductPage({ params }: UpdateProductPagePro
     <Card>
       <CardHeader className='space-y-1'>
         <div className='flex items-center justify-between space-x-2'>
-          <CardTitle as='h2' className='text-2xl'>
-            {` Update '${product.name}' product`}
-          </CardTitle>
+          <CardTitle className='text-2xl'>{` Update '${product.name}' product`}</CardTitle>
         </div>
         <CardDescription>Update your product information, or delete it</CardDescription>
       </CardHeader>
