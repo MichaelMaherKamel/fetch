@@ -3,7 +3,8 @@
 import * as React from 'react'
 import Link from 'next/link'
 import type { DataTableFilterableColumn, DataTableSearchableColumn } from '@/lib/types'
-import { Cross2Icon, PlusCircledIcon, TrashIcon } from '@radix-ui/react-icons'
+import { Icons } from '@/components/ui/icons'
+import { Cross2Icon, PlusCircledIcon } from '@radix-ui/react-icons'
 import type { Table } from '@tanstack/react-table'
 
 import { cn } from '@/lib/utils'
@@ -85,7 +86,7 @@ export function DataTableToolbar<TData>({
             }}
             disabled={isPending}
           >
-            <TrashIcon className='mr-2 h-4 w-4' aria-hidden='true' />
+            <Icons.deleteIcon className='mr-2 h-4 w-4' aria-hidden='true' />
             Delete
           </Button>
         ) : newRowLink ? (

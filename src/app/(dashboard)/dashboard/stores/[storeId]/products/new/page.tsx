@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { redirect } from 'next/navigation'
 import { env } from '@/lib/env.mjs'
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -27,7 +26,6 @@ export default async function NewProductPage({ params }: NewProductPageProps) {
         <CardDescription>Add a new product to your store</CardDescription>
       </CardHeader>
       <CardContent>
-        {/* <ProductForm storeId={storeId} /> */}
         <ProductForm storeId={storeId} />
       </CardContent>
     </Card>

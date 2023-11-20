@@ -14,7 +14,6 @@ import { z } from 'zod'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 
-
 const StoreForm = ({ store, closeModal }: { store?: Store; closeModal?: () => void }) => {
   const editing = !!store?.id
   const router = useRouter()
@@ -33,11 +32,25 @@ const StoreForm = ({ store, closeModal }: { store?: Store; closeModal?: () => vo
     },
   })
 
-  const onSuccess = (action: 'create' | 'update' | 'delete') => {
+  const onUpdateSuccess = (action: 'update') => {
     utils.stores.getStores.invalidate()
     router.refresh()
     closeModal?.()
     toast.success(`Store ${action}d! successfully 🎉`)
+  }
+
+  const onCreateSuccess = (action: 'create') => {
+    utils.stores.getStores.invalidate()
+    router.push(`/dashboard/stores`)
+    closeModal?.()
+    toast.success(`Store ${action}d! successfully 🎉`)
+  }
+
+  const onDeleteSuccess = (action: 'delete') => {
+    utils.stores.getStores.invalidate()
+    router.push(`/dashboard/stores`)
+    closeModal?.()
+    toast.success(`Store ${action}d! 🗑️ successfully`)
   }
 
   const onFailure = () => {
@@ -46,15 +59,15 @@ const StoreForm = ({ store, closeModal }: { store?: Store; closeModal?: () => vo
   }
 
   const { mutate: createStore, isLoading: isCreating } = trpc.stores.createStore.useMutation({
-    onSuccess: () => onSuccess('create'),
+    onSuccess: () => onCreateSuccess('create'),
   })
 
   const { mutate: updateStore, isLoading: isUpdating } = trpc.stores.updateStore.useMutation({
-    onSuccess: () => onSuccess('update'),
+    onSuccess: () => onUpdateSuccess('update'),
   })
 
   const { mutate: deleteStore, isLoading: isDeleting } = trpc.stores.deleteStore.useMutation({
-    onSuccess: () => onSuccess('delete'),
+    onSuccess: () => onDeleteSuccess('delete'),
   })
 
   const handleSubmit = (values: NewStoreParams) => {

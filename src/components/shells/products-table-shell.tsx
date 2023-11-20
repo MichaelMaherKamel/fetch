@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { products, type Product } from '@/lib/db/schema/products'
 import { DotsHorizontalIcon } from '@radix-ui/react-icons'
 import { type ColumnDef } from '@tanstack/react-table'
@@ -11,6 +12,7 @@ import { catchError, formatDate, formatPrice } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
+import { Icons } from '@/components/ui/icons'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,7 +23,8 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { DataTable } from '@/components/data-table/data-table'
 import { DataTableColumnHeader } from '@/components/data-table/data-table-column-header'
-import { deleteProduct } from '@/lib/api/products/mutations'
+
+import { trpc } from '@/lib/trpc/client'
 
 interface ProductsTableShellProps {
   data: Product[]
@@ -30,6 +33,19 @@ interface ProductsTableShellProps {
 }
 
 export function ProductsTableShell({ data, pageCount, storeId }: ProductsTableShellProps) {
+  const router = useRouter()
+  const utils = trpc.useContext()
+
+  const onSuccess = (action: 'delete') => {
+    utils.stores.getStores.invalidate()
+    router.refresh()
+    toast.success(`Product ${action}d! 🗑️ successfully`)
+  }
+
+  const { mutate: deleteProduct, isLoading: isDeleting } = trpc.products.deleteProduct.useMutation({
+    onSuccess: () => onSuccess('delete'),
+  })
+
   const [isPending, startTransition] = React.useTransition()
   const [selectedRowIds, setSelectedRowIds] = React.useState<number[]>([])
 
@@ -95,10 +111,6 @@ export function ProductsTableShell({ data, pageCount, storeId }: ProductsTableSh
         header: ({ column }) => <DataTableColumnHeader column={column} title='Inventory' />,
       },
       {
-        accessorKey: 'rating',
-        header: ({ column }) => <DataTableColumnHeader column={column} title='Rating' />,
-      },
-      {
         accessorKey: 'createdAt',
         header: ({ column }) => <DataTableColumnHeader column={column} title='Created At' />,
         cell: ({ cell }) => formatDate(cell.getValue() as Date),
@@ -114,29 +126,32 @@ export function ProductsTableShell({ data, pageCount, storeId }: ProductsTableSh
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align='end' className='w-[160px]'>
-              <DropdownMenuItem asChild>
-                <Link href={`/dashboard/stores/${storeId}/products/${row.original.id}`}>Edit</Link>
+              <DropdownMenuItem asChild className='flex justify-between'>
+                <Link href={`/dashboard/stores/${storeId}/products/${row.original.id}`}>
+                  Edit <Icons.editIcon />
+                </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href={`/product/${row.original.id}`}>View</Link>
+              <DropdownMenuItem asChild className='flex justify-between'>
+                <Link href={`/product/${row.original.id}`}>
+                  View <Icons.viewIcon />
+                </Link>
               </DropdownMenuItem>
+
               <DropdownMenuSeparator />
               <DropdownMenuItem
+                className='flex justify-between'
                 onClick={() => {
                   startTransition(() => {
                     row.toggleSelected(false)
-
-                    toast.promise(deleteProduct(row.original.id), {
-                      loading: 'Deleting...',
-                      success: () => 'Product deleted successfully.',
-                      error: (err: unknown) => catchError(err),
+                    deleteProduct({
+                      id: row.original.id,
                     })
                   })
                 }}
                 disabled={isPending}
               >
                 Delete
-                <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
+                <Icons.deleteIcon />
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -147,7 +162,7 @@ export function ProductsTableShell({ data, pageCount, storeId }: ProductsTableSh
   )
 
   function deleteSelectedRows() {
-    toast.promise(Promise.all(selectedRowIds.map((id) => deleteProduct(id))), {
+    toast.promise(Promise.all(selectedRowIds.map((id) => deleteProduct({ id }))), {
       loading: 'Deleting...',
       success: () => {
         setSelectedRowIds([])
